@@ -18,6 +18,16 @@ let myMap = L.map('map', {
 
 L.control.layers(baseMap, earthquakeLayer).addTo(myMap);
 
+let legend = L.control({
+    position: "bottomright"
+ });
+
+      legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'legend');
+        return div;
+      };
+legend.addTo(myMap);
+
 const link = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson';
 
 function createMarkers(response) {
@@ -47,7 +57,6 @@ function createMarkers(response) {
         fillOpacity: 0.7,
         color: "#000",
         weight: 1, 
-        className: 'earthquake-marker'
       });
       
       eMarker.bindPopup(`Magnitude: ${eMag}<br>Depth: ${eDepth}`);
@@ -56,6 +65,5 @@ function createMarkers(response) {
     }
   }
 
-fetch(link)
-  .then(response => response.json())
-  .then(createMarkers);
+d3.json(link)
+  .then(response => createMarkers(response));
