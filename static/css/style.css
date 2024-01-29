@@ -1,3 +1,4 @@
+
 body {
   padding: 0;
   margin: 0;
@@ -7,4 +8,27 @@ body {
 body,
 html {
   height: 100%;
+}
+
+
+.earthquake-marker {
+  opacity: 0.7;
+  stroke: #000;
+  stroke-width: 1;
+}
+
+.depth-10 {
+  fill: #00FF00;
+}
+
+.depth-30 {
+  fill: #FFFF00;
+}
+
+.depth-50 {
+  fill: #FFA500;
+}
+
+.depth-50-over {
+  fill: #FF0000;
 }
