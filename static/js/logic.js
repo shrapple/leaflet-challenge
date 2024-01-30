@@ -58,6 +58,7 @@ function createMarkers(response) {
       let eFeature = eFeatures[i];
       let eCoords = eFeature.geometry.coordinates;
       let eMag = eFeature.properties.mag;
+      let eLocation = eFeature.properties.place;
       let eDepth = eCoords[2];
       let eRadius = eMag * 2;
       let depthColor = getColor(eDepth);
@@ -71,7 +72,7 @@ function createMarkers(response) {
         weight: 1, 
       })
       
-      eMarker.bindPopup(`Magnitude: ${eMag}<br>Depth: ${eDepth}`);
+      eMarker.bindPopup(`<h1> ${eLocation} </h1><br> Magnitude: ${eMag}<br>Depth: ${eDepth}`);
       earthquakeLayer['Earthquakes'].addLayer(eMarker);
   }};
 
